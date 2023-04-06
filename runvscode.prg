@@ -37,15 +37,17 @@ PROCE MAIN(cCodPrg)
        RETURN .F.
     ENDIF
 
+    cDir:=lower(cFilePath(cCodeExe))
+    cBin:=cFileName(cCodeExe)
+    cRun:="@ECHO OFF"+CRLF+;
+          "CD "+cDir+CRLF+;
+          cBin+" "+cFilePrg
+
+    DPWRITE(cBat,cRun)
+
     IF lCmd 
 
-      cDir:=lower(cFilePath(cCodeExe))
-      cBin:=cFileName(cCodeExe)
-      cRun:="@ECHO OFF"+CRLF+;
-            "CD "+cDir+CRLF+;
-            cBin+" "+cFilePrg
-
-      DPWRITE(cBat,cRun)
+     
 
       WAITRUN(cBat,1)
 
